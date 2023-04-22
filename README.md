@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # e_food
 
 A new Flutter project.
@@ -15,6 +16,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# E-FOOD
+>>>>>>> 9153af58dc281981d00e7cd00ff7e9e6cc3b4608
 =======
 # E-FOOD
 >>>>>>> 9153af58dc281981d00e7cd00ff7e9e6cc3b4608
