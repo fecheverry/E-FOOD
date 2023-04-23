@@ -1,4 +1,7 @@
+import 'package:e_food/ui/pages/login_page.dart';
+import 'package:e_food/ui/pages/register_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({Key? key}) : super(key: key);
@@ -27,9 +30,10 @@ class StartPage extends StatelessWidget {
             const SizedBox(height: 48),
             ElevatedButton(
               onPressed: () {
-                // Acción al presionar el botón
+              Get.to(() => const RegisterPage());
               },
               style: ElevatedButton.styleFrom(
+                
                 backgroundColor: const Color.fromARGB(255, 127, 199, 129),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -48,7 +52,7 @@ class StartPage extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Acción al presionar el botón
+                Get.to(() => const LoginPage());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 127, 199, 129),
