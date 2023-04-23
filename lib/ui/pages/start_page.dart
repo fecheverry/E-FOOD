@@ -9,6 +9,7 @@ class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -17,7 +18,7 @@ class StartPage extends StatelessWidget {
               '!VAMOS A COMENZAR!',
               style: TextStyle(
                 fontSize: 32,
-                color: Color.fromARGB(255, 127, 199, 129),
+                color: Color.fromARGB(255, 82, 212, 87),
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -30,43 +31,42 @@ class StartPage extends StatelessWidget {
             const SizedBox(height: 48),
             ElevatedButton(
               onPressed: () {
-              Get.to(() => const RegisterPage());
+                Get.to(() => const RegisterPage());
               },
               style: ElevatedButton.styleFrom(
-                
-                backgroundColor: const Color.fromARGB(255, 127, 199, 129),
+                backgroundColor: const Color.fromARGB(255, 82, 212, 87),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                minimumSize: const Size(300, 48),
+                minimumSize: const Size(250, 40),
               ),
               child: const Text(
                 'REGISTRARSE',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
             ElevatedButton(
               onPressed: () {
                 Get.to(() => const LoginPage());
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 127, 199, 129),
+                backgroundColor: const Color.fromARGB(255, 82, 212, 87),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                minimumSize: const Size(300, 48),
+                minimumSize: const Size(250, 40),
               ),
               child: const Text(
                 'INICIAR SESIÓN',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
             ),

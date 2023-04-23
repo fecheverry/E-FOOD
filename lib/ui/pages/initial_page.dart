@@ -29,7 +29,7 @@ class InitialPage extends StatelessWidget {
                 TextSpan(
                   text: 'E',
                   style: TextStyle(
-                    color: Color.fromARGB(255, 127, 199, 129),
+                    color: Color.fromARGB(255, 82, 212, 87),
                   ),
                 ),
                 TextSpan(

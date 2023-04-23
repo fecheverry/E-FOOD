@@ -1,4 +1,8 @@
+import 'package:e_food/ui/pages/fridge_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -20,7 +24,7 @@ class RegisterPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 127, 199, 129),
+                color: Color.fromARGB(255, 82, 212, 87),
               ),
             ),
             const SizedBox(height: 20),
@@ -37,14 +41,14 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(30.0),
+                  padding: const EdgeInsets.fromLTRB(13, 12, 13, 10),
                   child: Column(
                     children: [
                       TextField(
                         decoration: InputDecoration(
                           labelText: 'Tu nombre',
                           prefixIcon: const Icon(Icons.person,
-                              color: Color.fromARGB(255, 127, 199, 129),
+                              color: Color.fromARGB(255, 82, 212, 87),
                               size: 25),
                           border: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey.shade300),
@@ -67,7 +71,7 @@ class RegisterPage extends StatelessWidget {
                         decoration: InputDecoration(
                           labelText: 'Correo electrónico',
                           prefixIcon: const Icon(Icons.email,
-                              color: Color.fromARGB(255, 127, 199, 129),
+                              color: Color.fromARGB(255, 82, 212, 87),
                               size: 25),
                           border: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey.shade300),
@@ -78,7 +82,7 @@ class RegisterPage extends StatelessWidget {
                         decoration: InputDecoration(
                           labelText: 'Contraseña',
                           prefixIcon: const Icon(Icons.lock,
-                              color: Color.fromARGB(255, 127, 199, 129),
+                              color: Color.fromARGB(255, 82, 212, 87),
                               size: 25),
                           border: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey.shade300),
@@ -89,40 +93,44 @@ class RegisterPage extends StatelessWidget {
                         decoration: InputDecoration(
                           labelText: 'Repita la contraseña',
                           prefixIcon: const Icon(Icons.lock,
-                              color: Color.fromARGB(255, 127, 199, 129),
+                              color: Color.fromARGB(255, 82, 212, 87),
                               size: 25),
                           border: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey.shade300),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20.0),
+                      const SizedBox(height: 35.0),
                       const Text(
                         'Leer términos y condiciones',
                         style: TextStyle(
-                          color: Color.fromARGB(255, 127, 199, 129),
+                          color: Color.fromARGB(255, 82, 212, 87),
                           fontSize: 12.0,
                         ),
                       ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: 40,
-                            width: 24.0,
-                            child: Checkbox(
-                              value: false,
-                              onChanged: (value) {},
+                      const SizedBox(height: 5),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 40,
+                              width: 24.0,
+                              child: Checkbox(
+                                value: false,
+                                onChanged: (value) {},
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 10.0),
-                          const Text(
-                            'Acepto los términos y condiciones',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 127, 199, 129),
-                              fontSize: 12.0,
+                            const SizedBox(width: 10.0),
+                            const Text(
+                              'Acepto los términos y condiciones',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 82, 212, 87),
+                                fontSize: 12.0,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -136,9 +144,9 @@ class RegisterPage extends StatelessWidget {
               width: 250,
               height: 50.0,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {   Get.to(() =>  const FridgePage());},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 127, 199, 129),
+                  backgroundColor: const Color.fromARGB(255, 82, 212, 87),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),

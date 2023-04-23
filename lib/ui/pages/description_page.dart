@@ -9,6 +9,7 @@ class DescriptionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 24),
@@ -22,7 +23,7 @@ class DescriptionPage extends StatelessWidget {
                   'BIENVENIDO A E-FOOD',
                   style: TextStyle(
                     fontSize: 32,
-                    color: Color.fromARGB(255, 127, 199, 129),
+                    color: Color.fromARGB(255, 82, 212, 87),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -75,7 +76,7 @@ class DescriptionPage extends StatelessWidget {
                       Get.to(() => const StartPage());
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 127, 199, 129),
+                      backgroundColor: const Color.fromARGB(255, 82, 212, 87),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
                       ),
