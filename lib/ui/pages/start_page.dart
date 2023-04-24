@@ -15,7 +15,7 @@ class StartPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              '!VAMOS A COMENZAR!',
+              '¡VAMOS A COMENZAR!',
               style: TextStyle(
                 fontSize: 32,
                 color: Color.fromARGB(255, 82, 212, 87),

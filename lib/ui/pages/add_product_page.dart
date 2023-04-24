@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ProductDetailPage extends StatefulWidget {
-  const ProductDetailPage({super.key});
+class AddProductPage extends StatefulWidget {
+  const AddProductPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _ProductDetailPageState createState() => _ProductDetailPageState();
+  _AddProductPageState createState() => _AddProductPageState();
 }
 
-class _ProductDetailPageState extends State<ProductDetailPage> {
+class _AddProductPageState extends State<AddProductPage> {
   int _quantity = 1;
   String? _selectedOptionStorage;
   String? _selectedOptionCategory;
@@ -33,6 +33,22 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               },
             ),
           ),
+          actions: [
+            Container(
+              margin: const EdgeInsets.only(right: 30),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.notifications,
+                  color: Color.fromARGB(255, 196, 193, 193),
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(
+                      '/notifications'); // Reemplaza "/notifications" con la ruta de la página a la que quieres navegar
+                },
+              ),
+            ),
+          ],
           toolbarHeight: 44,
         ),
         body: Padding(
@@ -41,52 +57,28 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    "DETALLES DEL PRODUCTO",
+                    "AGREGAR PRODUCTO",
                     style: TextStyle(
                         fontSize: 23,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 82, 212, 87)),
                   ),
                   const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: const [
-                          Icon(
-                            Icons.fastfood,
-                            color: Color.fromARGB(255, 82, 212, 87),
-                            size: 38,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          )
-                        ],
-                      ),
-                      const SizedBox(width: 10),
-                      Container(
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Color.fromARGB(255, 182, 176, 176),
-                              width: 1.3,
-                            ),
-                          ),
-                        ),
-                        width: 290,
-                        child: const Padding(
-                          padding: EdgeInsets.only(bottom: 8.0),
-                          child: Text(
-                            "Nombre del Producto",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 23,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  const Text(
+                    "Nombre del Producto",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 23,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 1.3,
+                    margin: const EdgeInsets.symmetric(horizontal: 70),
+                    color: const Color.fromARGB(255, 241, 239, 239),
                   ),
                   const SizedBox(height: 30),
                   Row(
@@ -150,7 +142,22 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     margin: const EdgeInsets.symmetric(horizontal: 20),
                     color: const Color.fromARGB(255, 182, 176, 176),
                   ),
-                  const SizedBox(height: 17),
+                  const SizedBox(height: 20),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.symmetric(
+                        horizontal:
+                            30), // aquí se establece la alineación a la izquierda
+                    child: const Text(
+                      "Detalles",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 82, 212, 87),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -251,12 +258,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     ],
                   ),
                   const SizedBox(height: 18),
-                  Container(
-                    height: 1.3,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    color: const Color.fromARGB(255, 182, 176, 176),
-                  ),
-                  const SizedBox(height: 17),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -357,13 +358,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 19),
-                  Container(
-                    height: 1.3,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    color: const Color.fromARGB(255, 182, 176, 176),
-                  ),
-                  const SizedBox(height: 19),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -419,7 +414,78 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         ),
                       )
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: 215,
+                    height: 40,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Aquí puedes agregar la acción que desees al hacer clic en el botón
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 82, 212,
+                            87), // aquí se establece el color de fondo del botón
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              15), // aquí se establece el radio de los bordes circulares
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.add,
+                              size: 13,
+                              color: Colors
+                                  .white), // aquí se agrega el icono "+" en blanco
+                          SizedBox(width: 5),
+                          Text(
+                            "AGREGAR PRODUCTO",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ), // aquí se agrega el texto en blanco
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    height: 1.3,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    color: const Color.fromARGB(255, 182, 176, 176),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // aquí agregas la navegación hacia otra página
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        SizedBox(
+                          width: 40,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_up_outlined,
+                          color: Color.fromARGB(255, 182, 176, 176),
+                          size: 40,
+                        ),
+                        Text(
+                          "Mostrar sugerencias",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 182, 176, 176),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800),
+                        ),
+                      ],
+                    ),
+                  ),
                 ])));
   }
 }

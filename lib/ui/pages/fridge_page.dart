@@ -1,5 +1,9 @@
+import 'package:e_food/ui/pages/add_product_page.dart';
 import 'package:e_food/ui/pages/product_detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'start_page.dart';
 
 class FridgePage extends StatelessWidget {
   const FridgePage({super.key});
@@ -149,7 +153,9 @@ class FridgePage extends StatelessWidget {
             child: FloatingActionButton(
               key: const Key("add_button"),
               heroTag: "btn2",
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const AddProductPage());
+              },
               backgroundColor: const Color.fromARGB(255, 82, 212, 87),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
