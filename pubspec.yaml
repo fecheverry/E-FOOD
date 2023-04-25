@@ -31,6 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
   get:
+  flutter_circular_slider:
+  connectivity:
+  loggy:
+  http:
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,3 +1,5 @@
+import 'package:e_food/ui/pages/notifications_page.dart';
+import 'package:e_food/ui/widgets/modal_bottom.dart';
 import 'package:flutter/material.dart';
 
 class AddProductPage extends StatefulWidget {
@@ -43,8 +45,11 @@ class _AddProductPageState extends State<AddProductPage> {
                   size: 40,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(
-                      '/notifications'); // Reemplaza "/notifications" con la ruta de la página a la que quieres navegar
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationsPage()),
+                  );
                 },
               ),
             ),
@@ -463,7 +468,7 @@ class _AddProductPageState extends State<AddProductPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // aquí agregas la navegación hacia otra página
+                      showBottomSheetList(context);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
