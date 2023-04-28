@@ -3,8 +3,6 @@ import 'package:e_food/ui/pages/product_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'start_page.dart';
-
 class FridgePage extends StatelessWidget {
   const FridgePage({super.key});
 
@@ -31,16 +29,26 @@ class FridgePage extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: const SizedBox(
+                  child: SizedBox(
                     height: 35,
                     child: TextField(
                       enabled: false,
                       decoration: InputDecoration(
                         hintText: "Ejemplo de texto decorado",
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 16.0),
                         border: InputBorder.none,
-                        prefixIcon:
-                            Icon(Icons.manage_search, color: Colors.black),
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: SizedBox(
+                            width: 0,
+                            height: 0,
+                            child: Image.asset(
+                              'assets/icono_filtros.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                         // Centro el texto
                         hintTextDirection: TextDirection.ltr,
                       ),
@@ -51,14 +59,12 @@ class FridgePage extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black, width: 2),
-                ),
-                child: const CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: Icon(Icons.search, color: Colors.black, size: 30),
+              SizedBox(
+                width: 46,
+                height: 46,
+                child: Image.asset(
+                  'assets/icono_lupa.png',
+                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(
@@ -122,10 +128,13 @@ class FridgePage extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 8.0),
-                            const Icon(
-                              Icons.fastfood_outlined,
-                              size: 48.0,
-                              color: Colors.black87,
+                            SizedBox(
+                              width: 60,
+                              height: 60,
+                              child: Image.asset(
+                                'assets/lacteos_negro.png',
+                                fit: BoxFit.cover,
+                              ),
                             ),
                             const SizedBox(height: 8.0),
                             const Text(
@@ -178,28 +187,37 @@ class FridgePage extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.white,
           selectedItemColor: const Color.fromARGB(255, 82, 212, 87),
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.kitchen,
-                size: 40,
-                color: Color.fromARGB(255, 82, 212, 87),
+              icon: SizedBox(
+                width: 60,
+                height: 60,
+                child: Image.asset(
+                  'assets/lacteos_negro.png',
+                  fit: BoxFit.cover,
+                ),
               ),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.list,
-                size: 40,
-                color: Color.fromARGB(255, 82, 212, 87),
+              icon: SizedBox(
+                width: 60,
+                height: 60,
+                child: Image.asset(
+                  'assets/lacteos_negro.png',
+                  fit: BoxFit.cover,
+                ),
               ),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: 40,
-                color: Color.fromARGB(255, 82, 212, 87),
+              icon: SizedBox(
+                width: 60,
+                height: 60,
+                child: Image.asset(
+                  'assets/lacteos_negro.png',
+                  fit: BoxFit.cover,
+                ),
               ),
               label: "",
             ),

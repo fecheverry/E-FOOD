@@ -28,7 +28,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   size: 40,
                 ),
                 onPressed: () {
-                  // Aquí puedes agregar la acción que desees al hacer clic en el icono
+                  Navigator.of(context).pop();
                 },
               ),
             ),
@@ -65,10 +65,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
-                  Icons.calendar_month,
-                  color: Color.fromARGB(255, 82, 212, 87),
-                  size: 36,
+                SizedBox(
+                  width: 32,
+                  height: 32,
+                  child: Image.asset(
+                    'assets/calendario.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 const SizedBox(
                   width: 8,
@@ -206,7 +209,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 height: 38,
                 child: ElevatedButton(
                   onPressed: () {
-                 
+                    Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 82, 212,
@@ -232,4 +235,3 @@ class _NotificationsPageState extends State<NotificationsPage> {
         ));
   }
 }
-

@@ -1,79 +1,67 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 final List<Alimento> alimentos = [
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
   Alimento(
-    icono: Icons.ac_unit,
+    asset: "assets/lacteos.png",
     nombre: 'Lechuga',
     diasCaducidad: 5,
-    color: Colors.green,
   ),
 ];
 
 class Alimento {
-  IconData icono;
+  String asset;
   String nombre;
   int diasCaducidad;
-  Color color;
-  Alimento(
-      {required this.icono,
-      required this.nombre,
-      required this.diasCaducidad,
-      required this.color});
+  Alimento({
+    required this.asset,
+    required this.nombre,
+    required this.diasCaducidad,
+  });
 }
 
 Future<dynamic> showBottomSheetList(BuildContext context) {
@@ -176,10 +164,13 @@ Future<dynamic> showBottomSheetList(BuildContext context) {
                             padding: const EdgeInsets.all(10),
                             child: Row(
                               children: [
-                                Icon(
-                                  alimentos[index].icono,
-                                  size: 30,
-                                  color: alimentos[index].color,
+                                SizedBox(
+                                  width: 40,
+                                  height: 40,
+                                  child: Image.asset(
+                                    alimentos[index].asset,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                                 const SizedBox(width: 16),
                                 Expanded(
@@ -216,8 +207,8 @@ Future<dynamic> showBottomSheetList(BuildContext context) {
                                       backgroundColor: const Color.fromARGB(
                                           255, 82, 212, 87),
                                       shape: const CircleBorder(),
-                                      minimumSize: const Size(50,
-                                          50), // Establecer el tamaño del botón
+                                      minimumSize: const Size(35,
+                                          35), // Ajustar el tamaño del botón
                                     ),
                                     child: Ink(
                                       decoration: const ShapeDecoration(
@@ -228,7 +219,7 @@ Future<dynamic> showBottomSheetList(BuildContext context) {
                                         Icons.add,
                                         color: Colors.white,
                                         size:
-                                            40, // Establecer el tamaño deseado del icono
+                                            30, // Ajustar el tamaño deseado del icono
                                       ),
                                     ),
                                   ),

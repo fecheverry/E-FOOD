@@ -52,13 +52,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(
-                        children: const [
-                          Icon(
-                            Icons.fastfood,
-                            color: Color.fromARGB(255, 82, 212, 87),
-                            size: 38,
-                          ),
+                        children: [
                           SizedBox(
+                            width: 40,
+                            height: 40,
+                            child: Image.asset(
+                              'assets/cubiertos.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          const SizedBox(
                             height: 10,
                           )
                         ],
@@ -91,13 +94,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.calendar_month,
-                        color: Color.fromARGB(255, 82, 212, 87),
-                        size: 30,
+                    children: [
+                      SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: Image.asset(
+                          'assets/calendario.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      Text(
+                      const SizedBox(
+                        width: 2,
+                      ),
+                      const Text(
                         "Fecha aprox. de caducidad",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -154,10 +163,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.food_bank,
-                        color: Color.fromARGB(255, 82, 212, 87),
-                        size: 60,
+                      SizedBox(
+                        width: 55,
+                        height: 55,
+                        child: Image.asset(
+                          'assets/almacenamiento.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
@@ -260,13 +272,16 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.category_outlined,
-                        color: Color.fromARGB(255, 82, 212, 87),
-                        size: 60,
+                      SizedBox(
+                        width: 46,
+                        height: 46,
+                        child: Image.asset(
+                          'assets/categorias.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        width: 7,
                       ),
                       SizedBox(
                         width: 200,
@@ -323,7 +338,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         title:
                                             const Text('Selecciona una opción'),
                                         content: DropdownButton<String>(
-                                          value: _selectedOptionCategory,
+                                          value: _selectedOptionStorage,
                                           items: <String>[
                                             'Opción 1',
                                             'Opción 2',
@@ -337,8 +352,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                           }).toList(),
                                           onChanged: (String? newValue) {
                                             setState(() {
-                                              _selectedOptionCategory =
-                                                  newValue;
+                                              _selectedOptionStorage = newValue;
                                             });
                                             Navigator.pop(
                                                 context); // Cierra el AlertDialog
@@ -349,7 +363,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                   );
                                 },
                                 controller: TextEditingController(
-                                    text: _selectedOptionCategory),
+                                    text: _selectedOptionStorage),
                               ),
                             ),
                           ],
@@ -376,21 +390,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         ),
                       ),
                       const SizedBox(width: 25),
-                      ElevatedButton(
-                        onPressed: () {
+                      GestureDetector(
+                        onTap: () {
                           setState(() {
                             _quantity--;
                           });
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 82, 212, 87),
-                          shape: const CircleBorder(),
-                          padding: const EdgeInsets.all(4),
+                        child: Image.asset(
+                          "assets/menos.png",
+                          width: 30,
+                          height: 30,
                         ),
-                        child: const Icon(Icons.remove),
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 22),
                       Text(
                         _quantity.toString(),
                         style: const TextStyle(
@@ -399,25 +411,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           color: Color.fromARGB(255, 172, 169, 169),
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      ElevatedButton(
-                        onPressed: () {
+                      const SizedBox(width: 22),
+                      GestureDetector(
+                        onTap: () {
                           setState(() {
                             _quantity++;
                           });
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 82, 212, 87),
-                          shape: const CircleBorder(),
-                          padding:
-                              const EdgeInsets.all(4), // disminuye el padding
+                        child: Image.asset(
+                          "assets/mas.png",
+                          width: 30,
+                          height: 30,
                         ),
-                        child: const Icon(
-                          Icons.add,
-                          size: 24, // cambia el tamaño del icono
-                        ),
-                      )
+                      ),
                     ],
                   )
                 ])));

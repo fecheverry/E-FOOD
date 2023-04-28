@@ -2,8 +2,6 @@ import 'package:e_food/ui/pages/fridge_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
@@ -47,9 +45,17 @@ class RegisterPage extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           labelText: 'Tu nombre',
-                          prefixIcon: const Icon(Icons.person,
-                              color: Color.fromARGB(255, 82, 212, 87),
-                              size: 25),
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: SizedBox(
+                              width: 15,
+                              height: 15,
+                              child: Image.asset(
+                                'assets/icono_perfil.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                           border: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey.shade300),
                           ),
@@ -70,9 +76,17 @@ class RegisterPage extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           labelText: 'Correo electrónico',
-                          prefixIcon: const Icon(Icons.email,
-                              color: Color.fromARGB(255, 82, 212, 87),
-                              size: 25),
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: SizedBox(
+                              width: 15,
+                              height: 15,
+                              child: Image.asset(
+                                'assets/icono_correo.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                           border: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey.shade300),
                           ),
@@ -81,9 +95,17 @@ class RegisterPage extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           labelText: 'Contraseña',
-                          prefixIcon: const Icon(Icons.lock,
-                              color: Color.fromARGB(255, 82, 212, 87),
-                              size: 25),
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: SizedBox(
+                              width: 15,
+                              height: 15,
+                              child: Image.asset(
+                                'assets/icono_candado.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                           border: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey.shade300),
                           ),
@@ -92,9 +114,17 @@ class RegisterPage extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           labelText: 'Repita la contraseña',
-                          prefixIcon: const Icon(Icons.lock,
-                              color: Color.fromARGB(255, 82, 212, 87),
-                              size: 25),
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: SizedBox(
+                              width: 15,
+                              height: 15,
+                              child: Image.asset(
+                                'assets/icono_candado.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                           border: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey.shade300),
                           ),
@@ -144,7 +174,9 @@ class RegisterPage extends StatelessWidget {
               width: 250,
               height: 50.0,
               child: ElevatedButton(
-                onPressed: () {   Get.to(() =>  const FridgePage());},
+                onPressed: () {
+                  Get.to(() => const FridgePage());
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 82, 212, 87),
                   shape: RoundedRectangleBorder(

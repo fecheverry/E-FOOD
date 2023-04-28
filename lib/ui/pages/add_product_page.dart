@@ -1,6 +1,8 @@
+import 'package:e_food/ui/pages/fridge_page.dart';
 import 'package:e_food/ui/pages/notifications_page.dart';
 import 'package:e_food/ui/widgets/modal_bottom.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
@@ -37,20 +39,20 @@ class _AddProductPageState extends State<AddProductPage> {
           ),
           actions: [
             Container(
-              margin: const EdgeInsets.only(right: 30),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.notifications,
-                  color: Color.fromARGB(255, 196, 193, 193),
-                  size: 40,
-                ),
-                onPressed: () {
+              margin: const EdgeInsets.only(right: 30, top: 10),
+              child: GestureDetector(
+                onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const NotificationsPage()),
                   );
                 },
+                child: Image.asset(
+                  "assets/campana.png",
+                  width: 40,
+                  height: 40,
+                ),
               ),
             ),
           ],
@@ -88,13 +90,19 @@ class _AddProductPageState extends State<AddProductPage> {
                   const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.calendar_month,
-                        color: Color.fromARGB(255, 82, 212, 87),
-                        size: 30,
+                    children: [
+                      SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: Image.asset(
+                          'assets/calendario.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      Text(
+                      const SizedBox(
+                        width: 2,
+                      ),
+                      const Text(
                         "Fecha aprox. de caducidad",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -162,14 +170,17 @@ class _AddProductPageState extends State<AddProductPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 18),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.food_bank,
-                        color: Color.fromARGB(255, 82, 212, 87),
-                        size: 60,
+                      SizedBox(
+                        width: 49,
+                        height: 49,
+                        child: Image.asset(
+                          'assets/almacenamiento.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
@@ -266,13 +277,16 @@ class _AddProductPageState extends State<AddProductPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.category_outlined,
-                        color: Color.fromARGB(255, 82, 212, 87),
-                        size: 60,
+                      SizedBox(
+                        width: 40,
+                        height: 40,
+                        child: Image.asset(
+                          'assets/categorias.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       const SizedBox(
-                        height: 10,
+                        width: 9,
                       ),
                       SizedBox(
                         width: 200,
@@ -376,21 +390,19 @@ class _AddProductPageState extends State<AddProductPage> {
                         ),
                       ),
                       const SizedBox(width: 25),
-                      ElevatedButton(
-                        onPressed: () {
+                      GestureDetector(
+                        onTap: () {
                           setState(() {
                             _quantity--;
                           });
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 82, 212, 87),
-                          shape: const CircleBorder(),
-                          padding: const EdgeInsets.all(4),
+                        child: Image.asset(
+                          "assets/menos.png",
+                          width: 30,
+                          height: 30,
                         ),
-                        child: const Icon(Icons.remove),
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 22),
                       Text(
                         _quantity.toString(),
                         style: const TextStyle(
@@ -399,25 +411,19 @@ class _AddProductPageState extends State<AddProductPage> {
                           color: Color.fromARGB(255, 172, 169, 169),
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      ElevatedButton(
-                        onPressed: () {
+                      const SizedBox(width: 22),
+                      GestureDetector(
+                        onTap: () {
                           setState(() {
                             _quantity++;
                           });
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 82, 212, 87),
-                          shape: const CircleBorder(),
-                          padding:
-                              const EdgeInsets.all(4), // disminuye el padding
+                        child: Image.asset(
+                          "assets/mas.png",
+                          width: 30,
+                          height: 31,
                         ),
-                        child: const Icon(
-                          Icons.add,
-                          size: 24, // cambia el tamaño del icono
-                        ),
-                      )
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -428,7 +434,7 @@ class _AddProductPageState extends State<AddProductPage> {
                     height: 40,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Aquí puedes agregar la acción que desees al hacer clic en el botón
+                        Get.to(() => const FridgePage());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 82, 212,

@@ -24,11 +24,11 @@ class StartPage extends StatelessWidget {
             ),
             const SizedBox(height: 48),
             Image.asset(
-              'assets/1.png', // Reemplazar por la ruta de la imagen
-              height: 300,
-              width: 300,
+              "assets/fresa.png", // Reemplazar por la ruta de la imagen
+              height: 320,
+              width: 320,
             ),
-            const SizedBox(height: 48),
+            const SizedBox(height: 35),
             ElevatedButton(
               onPressed: () {
                 Get.to(() => const RegisterPage());
