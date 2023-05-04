@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>475178797192-vvn6gmks4ec0ag9oco9ac674lrj6k811.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.475178797192-vvn6gmks4ec0ag9oco9ac674lrj6k811</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAZJcAFde2M4y6AJBDrfGFikflcMIThjNw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>475178797192</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.eFood</string>
+	<key>PROJECT_ID</key>
+	<string>e-food-9f5f6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>e-food-9f5f6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:475178797192:ios:2412ccad918d8d80e3f73d</string>
+</dict>
+</plist>
