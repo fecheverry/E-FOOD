@@ -1,14 +1,19 @@
+import 'package:e_food/app/ui/pages/product/fridge_page.dart';
+import 'package:e_food/app/ui/pages/product/notifications_page.dart';
+import 'package:e_food/app/ui/pages/widgets/modal_bottom.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/ui.dart';
+import 'package:get/get.dart';
 
-class ProductDetailPage extends StatefulWidget {
-  const ProductDetailPage({super.key});
+class AddProductPage extends StatefulWidget {
+  const AddProductPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _ProductDetailPageState createState() => _ProductDetailPageState();
+  _AddProductPageState createState() => _AddProductPageState();
 }
 
-class _ProductDetailPageState extends State<ProductDetailPage> {
+class _AddProductPageState extends State<AddProductPage> {
   int _quantity = 1;
   String? _selectedOptionStorage;
   String? _selectedOptionCategory;
@@ -29,10 +34,25 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 size: 40,
               ),
               onPressed: () {
-                Navigator.of(context).pop();
+                router.pop(context);
               },
             ),
           ),
+          actions: [
+            Container(
+              margin: const EdgeInsets.only(right: 30, top: 10),
+              child: GestureDetector(
+                onTap: () {
+                  router.pushNamed("/notifications", backGestureEnabled: true);
+                },
+                child: Image.asset(
+                  "assets/campana.png",
+                  width: 40,
+                  height: 40,
+                ),
+              ),
+            ),
+          ],
           toolbarHeight: 44,
         ),
         body: Padding(
@@ -41,55 +61,28 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    "DETALLES DEL PRODUCTO",
+                    "AGREGAR PRODUCTO",
                     style: TextStyle(
                         fontSize: 23,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 82, 212, 87)),
                   ),
                   const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 40,
-                            height: 40,
-                            child: Image.asset(
-                              'assets/cubiertos.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          )
-                        ],
-                      ),
-                      const SizedBox(width: 10),
-                      Container(
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Color.fromARGB(255, 182, 176, 176),
-                              width: 1.3,
-                            ),
-                          ),
-                        ),
-                        width: 290,
-                        child: const Padding(
-                          padding: EdgeInsets.only(bottom: 8.0),
-                          child: Text(
-                            "Nombre del Producto",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 23,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  const Text(
+                    "Nombre del Producto",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 23,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 1.3,
+                    margin: const EdgeInsets.symmetric(horizontal: 70),
+                    color: const Color.fromARGB(255, 241, 239, 239),
                   ),
                   const SizedBox(height: 30),
                   Row(
@@ -159,13 +152,28 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     margin: const EdgeInsets.symmetric(horizontal: 20),
                     color: const Color.fromARGB(255, 182, 176, 176),
                   ),
-                  const SizedBox(height: 17),
+                  const SizedBox(height: 20),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.symmetric(
+                        horizontal:
+                            30), // aquí se establece la alineación a la izquierda
+                    child: const Text(
+                      "Detalles",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 82, 212, 87),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 18),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 55,
-                        height: 55,
+                        width: 49,
+                        height: 49,
                         child: Image.asset(
                           'assets/almacenamiento.png',
                           fit: BoxFit.cover,
@@ -263,25 +271,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     ],
                   ),
                   const SizedBox(height: 18),
-                  Container(
-                    height: 1.3,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    color: const Color.fromARGB(255, 182, 176, 176),
-                  ),
-                  const SizedBox(height: 17),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 46,
-                        height: 46,
+                        width: 40,
+                        height: 40,
                         child: Image.asset(
                           'assets/categorias.png',
                           fit: BoxFit.cover,
                         ),
                       ),
                       const SizedBox(
-                        width: 7,
+                        width: 9,
                       ),
                       SizedBox(
                         width: 200,
@@ -338,7 +340,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         title:
                                             const Text('Selecciona una opción'),
                                         content: DropdownButton<String>(
-                                          value: _selectedOptionStorage,
+                                          value: _selectedOptionCategory,
                                           items: <String>[
                                             'Opción 1',
                                             'Opción 2',
@@ -352,7 +354,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                           }).toList(),
                                           onChanged: (String? newValue) {
                                             setState(() {
-                                              _selectedOptionStorage = newValue;
+                                              _selectedOptionCategory =
+                                                  newValue;
                                             });
                                             Navigator.pop(
                                                 context); // Cierra el AlertDialog
@@ -363,7 +366,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                   );
                                 },
                                 controller: TextEditingController(
-                                    text: _selectedOptionStorage),
+                                    text: _selectedOptionCategory),
                               ),
                             ),
                           ],
@@ -371,13 +374,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 19),
-                  Container(
-                    height: 1.3,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    color: const Color.fromARGB(255, 182, 176, 176),
-                  ),
-                  const SizedBox(height: 19),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -421,11 +418,82 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         child: Image.asset(
                           "assets/mas.png",
                           width: 30,
-                          height: 30,
+                          height: 31,
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: 215,
+                    height: 40,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        router.pushNamed("/fridge", backGestureEnabled: true);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 82, 212,
+                            87), // aquí se establece el color de fondo del botón
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              15), // aquí se establece el radio de los bordes circulares
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(Icons.add,
+                              size: 13,
+                              color: Colors
+                                  .white), // aquí se agrega el icono "+" en blanco
+                          SizedBox(width: 5),
+                          Text(
+                            "AGREGAR PRODUCTO",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ), // aquí se agrega el texto en blanco
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    height: 1.3,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    color: const Color.fromARGB(255, 182, 176, 176),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      showBottomSheetList(context);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        SizedBox(
+                          width: 40,
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_up_outlined,
+                          color: Color.fromARGB(255, 182, 176, 176),
+                          size: 40,
+                        ),
+                        Text(
+                          "Mostrar sugerencias",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 182, 176, 176),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800),
+                        ),
+                      ],
+                    ),
+                  ),
                 ])));
   }
 }

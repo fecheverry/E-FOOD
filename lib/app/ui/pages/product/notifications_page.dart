@@ -1,5 +1,6 @@
-import 'package:e_food/app/ui/widgets/hour_picker.dart';
+import 'package:e_food/app/ui/pages/widgets/hour_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/ui.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({super.key});
@@ -209,7 +210,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 height: 38,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    router.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 82, 212,

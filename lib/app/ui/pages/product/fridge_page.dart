@@ -1,6 +1,7 @@
-import 'package:e_food/app/ui/pages/add_product_page.dart';
-import 'package:e_food/app/ui/pages/product_detail_page.dart';
+import 'package:e_food/app/ui/pages/product/add_product_page.dart';
+import 'package:e_food/app/ui/pages/product/product_detail_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/ui.dart';
 import 'package:get/get.dart';
 
 class FridgePage extends StatelessWidget {
@@ -81,13 +82,7 @@ class FridgePage extends StatelessWidget {
                   16,
                   (index) => GestureDetector(
                     onTap: () {
-                      // Navegar a la pantalla de detalles del producto
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProductDetailPage()),
-                      );
-                    },
+              router.pushNamed("/detailproduct",backGestureEnabled: true);},
                     child: Card(
                       margin: const EdgeInsets.all(5.0),
                       shape: RoundedRectangleBorder(
@@ -163,7 +158,7 @@ class FridgePage extends StatelessWidget {
               key: const Key("add_button"),
               heroTag: "btn2",
               onPressed: () {
-                Get.to(() => const AddProductPage());
+               router.pushNamed("/addproduct",backGestureEnabled: true);
               },
               backgroundColor: const Color.fromARGB(255, 82, 212, 87),
               shape: RoundedRectangleBorder(

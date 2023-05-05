@@ -1,3 +1,4 @@
+import 'package:e_food/app/inject_dependencies.dart';
 import 'package:e_food/app/my_app.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  injectDependencies();
   runApp(const MyApp());
 }

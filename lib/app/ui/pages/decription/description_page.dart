@@ -1,6 +1,7 @@
-import 'package:e_food/app/ui/pages/start_page.dart';
-import 'package:e_food/app/ui/widgets/description_item.dart';
+import 'package:e_food/app/ui/pages/auth/start_page.dart';
+import 'package:e_food/app/ui/pages/widgets/description_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/ui.dart';
 import 'package:get/get.dart';
 
 class DescriptionPage extends StatelessWidget {
@@ -73,7 +74,7 @@ class DescriptionPage extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.to(() => const StartPage());
+                       router.pushNamed("/start",backGestureEnabled: true);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 82, 212, 87),

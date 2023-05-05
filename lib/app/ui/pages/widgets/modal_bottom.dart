@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/ui.dart';
 
 final List<Alimento> alimentos = [
   Alimento(
@@ -110,7 +111,7 @@ Future<dynamic> showBottomSheetList(BuildContext context) {
                         height: 25,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).pop();
+                            router.pop(context);
                           },
                           style: ElevatedButton.styleFrom(
                             elevation: 0,

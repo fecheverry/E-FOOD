@@ -1,6 +1,6 @@
-import 'package:e_food/app/ui/pages/fridge_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_meedu/ui.dart';
+
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -121,6 +121,7 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                 router.pushNamed("/fridge",backGestureEnabled: true);
          },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 82, 212, 87),
