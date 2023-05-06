@@ -1,8 +1,8 @@
-import 'package:e_food/app/ui/pages/product/add_product_page.dart';
-import 'package:e_food/app/ui/pages/product/product_detail_page.dart';
+import 'package:e_food/app/domain/repositories/authentication_repository.dart';
+import 'package:e_food/app/ui/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
-import 'package:get/get.dart';
 
 class FridgePage extends StatelessWidget {
   const FridgePage({super.key});
@@ -60,12 +60,20 @@ class FridgePage extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              SizedBox(
-                width: 46,
-                height: 46,
-                child: Image.asset(
-                  'assets/icono_lupa.png',
-                  fit: BoxFit.cover,
+              GestureDetector(
+                onTap: () async {
+                  final AuthenticationRepository authenticationRepository =
+                      Get.find();
+                  authenticationRepository.signOut();
+                  router.pushNamedAndRemoveUntil(Routes.START);
+                },
+                child: SizedBox(
+                  width: 46,
+                  height: 46,
+                  child: Image.asset(
+                    'assets/icono_lupa.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -82,7 +90,9 @@ class FridgePage extends StatelessWidget {
                   16,
                   (index) => GestureDetector(
                     onTap: () {
-              router.pushNamed("/detailproduct",backGestureEnabled: true);},
+                      router.pushNamed("/detailproduct",
+                          backGestureEnabled: true);
+                    },
                     child: Card(
                       margin: const EdgeInsets.all(5.0),
                       shape: RoundedRectangleBorder(
@@ -158,7 +168,7 @@ class FridgePage extends StatelessWidget {
               key: const Key("add_button"),
               heroTag: "btn2",
               onPressed: () {
-               router.pushNamed("/addproduct",backGestureEnabled: true);
+                router.pushNamed("/addproduct", backGestureEnabled: true);
               },
               backgroundColor: const Color.fromARGB(255, 82, 212, 87),
               shape: RoundedRectangleBorder(

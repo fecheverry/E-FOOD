@@ -20,6 +20,6 @@ Map<String, Widget Function(BuildContext)> get appRoutes => {
           Routes.FRIDGE : (_) =>  const FridgePage(),
             Routes.LOGIN : (_) =>  const LoginPage(),
               Routes.NOTIFICATIONS : (_) =>  const NotificationsPage(),
-                Routes.REGISTER : (_) =>  const  RegisterPage(),
+                Routes.REGISTER : (_) =>    const RegisterPage(),
                   Routes.START : (_) =>  const StartPage(),
 };

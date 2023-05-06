@@ -13,12 +13,11 @@ class SignUpRepositoryImpl implements SignUpRepository {
       final userCredential = await _auth.createUserWithEmailAndPassword(
           email: data.email, password: data.password);
 
-      await userCredential.user!
-          .updateDisplayName(data.name);
+      await userCredential.user!.updateDisplayName(data.name);
 
       return SignUpResponse(null, userCredential.user);
     } on FirebaseAuthException catch (e) {
-      return SignUpResponse(e.code, null);
+      return SignUpResponse(parseStringToSignUpError(e.code), null);
     }
   }
 }
