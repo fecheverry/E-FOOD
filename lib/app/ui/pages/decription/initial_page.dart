@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
 
-import 'description_page.dart';
+import '../../global_controllers/session_controller.dart';
 
-final descriptionProvider = SimpleProvider((_) => DescriptionController());
+final descriptionProvider = SimpleProvider((_) => DescriptionController(sessionProvider.read));
 
 class InitialPage extends StatelessWidget {
   const InitialPage({super.key});

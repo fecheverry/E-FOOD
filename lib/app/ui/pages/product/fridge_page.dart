@@ -62,10 +62,8 @@ class FridgePage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  final AuthenticationRepository authenticationRepository =
-                      Get.find();
-                  authenticationRepository.signOut();
-                  router.pushNamedAndRemoveUntil(Routes.START);
+
+             
                 },
                 child: SizedBox(
                   width: 46,
@@ -182,48 +180,33 @@ class FridgePage extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: Container(
-        margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+        width: double.infinity,
         decoration: const BoxDecoration(
-          border: Border(
-            top: BorderSide(color: Colors.black),
-          ),
+          color: Color.fromRGBO(54, 140, 114, 1),
         ),
         child: BottomNavigationBar(
           elevation: 0,
-          backgroundColor: Colors.white,
-          selectedItemColor: const Color.fromARGB(255, 82, 212, 87),
-          items: [
+          backgroundColor: const Color.fromRGBO(54, 140, 114, 1),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          currentIndex: 0,
+          onTap: (index) {
+            if (index == 2) {
+              router.pushNamed("/profile");
+            }
+            if (index == 1) {}
+          },
+          items: const [
             BottomNavigationBarItem(
-              icon: SizedBox(
-                width: 60,
-                height: 60,
-                child: Image.asset(
-                  'assets/lacteos_negro.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
+              icon: Icon(Icons.kitchen, size: 40),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: SizedBox(
-                width: 60,
-                height: 60,
-                child: Image.asset(
-                  'assets/lacteos_negro.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
+              icon: Icon(Icons.list, size: 40),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: SizedBox(
-                width: 60,
-                height: 60,
-                child: Image.asset(
-                  'assets/lacteos_negro.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
+              icon: Icon(Icons.person, size: 40),
               label: "",
             ),
           ],

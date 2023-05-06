@@ -2,6 +2,8 @@ import 'package:e_food/app/domain/inputs/sign_up.dart';
 import 'package:e_food/app/domain/repositories/sign_up_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../domain/responses/sign_up_response.dart';
+
 class SignUpRepositoryImpl implements SignUpRepository {
   final FirebaseAuth _auth;
 

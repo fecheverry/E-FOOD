@@ -5,6 +5,7 @@ import 'package:e_food/app/ui/pages/widgets/dialogs/progress_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
 
+import '../../../../../domain/responses/sign_up_response.dart';
 import '../../../../routes/routes.dart';
 import '../../../widgets/dialogs/dialogs.dart';
 
@@ -24,6 +25,9 @@ Future<void> sendRegisterForm(BuildContext context) async {
           break;
         case SignUpError.weakPassword:
           content = "Weak Password";
+          break;
+        case SignUpError.networkRequestFailed:
+          content = "network Request Failed";
           break;
         case SignUpError.unknown:
           content = "Unknown Error";

@@ -10,4 +10,5 @@ abstract class Routes {
               static const ADDPRODUCT = "/addproduct";
                 static const DETAILPRODUCT = "/detailproduct";
                   static const NOTIFICATIONS = "/notifications";
+                    static const PROFILE = "/profile";
 }

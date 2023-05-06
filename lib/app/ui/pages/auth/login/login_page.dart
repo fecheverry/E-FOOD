@@ -1,3 +1,5 @@
+import 'package:e_food/app/ui/global_controllers/session_controller.dart';
+import 'package:e_food/app/ui/pages/auth/login/utils/sign_login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
@@ -6,7 +8,7 @@ import '../../../../utils/email_validator.dart';
 import 'login_controller.dart';
 
 final loginProvider = SimpleProvider(
-  (_) => LoginController(),
+  (_) => LoginController(sessionProvider.read),
 );
 
 class LoginPage extends StatelessWidget {
@@ -208,9 +210,7 @@ class LoginPage extends StatelessWidget {
                       height: 40,
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        controller.formKey.currentState!.validate();
-                      },
+                      onPressed: ()=> sendLoginForm(context),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 82, 212, 87),
                         shape: RoundedRectangleBorder(
