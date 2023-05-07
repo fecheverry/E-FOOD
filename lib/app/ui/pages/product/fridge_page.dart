@@ -1,7 +1,4 @@
-import 'package:e_food/app/domain/repositories/authentication_repository.dart';
-import 'package:e_food/app/ui/routes/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
 
 class FridgePage extends StatelessWidget {
