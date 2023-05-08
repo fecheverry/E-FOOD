@@ -15,9 +15,7 @@ import '../pages/decription/initial_page.dart';
 Map<String, Widget Function(BuildContext)> get appRoutes => {
 
   Routes.E_FOOD : (_) =>  const InitialPage(),
-    Routes.ADDPRODUCT : (_) =>  const AddProductPage(),
       Routes.DESCRIPTION : (_) =>  const DescriptionPage(),
-        Routes.DETAILPRODUCT : (_) =>  const ProductDetailPage(),
           Routes.FRIDGE : (_) =>  const FridgePage(),
             Routes.LOGIN : (_) =>  const LoginPage(),
               Routes.NOTIFICATIONS : (_) =>  const NotificationsPage(),

@@ -1,11 +1,33 @@
-import 'package:e_food/app/domain/repositories/authentication_repository.dart';
-import 'package:e_food/app/ui/routes/routes.dart';
+import 'package:e_food/app/data/data_source/local/product_provider.dart';
+import 'package:e_food/app/ui/global_controllers/session_controller.dart';
+import 'package:e_food/app/ui/pages/product/add_product_page.dart';
+import 'package:e_food/app/ui/pages/product/product_detail_page.dart';
+import 'package:intl/intl.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_meedu/meedu.dart';
+
 import 'package:flutter_meedu/ui.dart';
 
-class FridgePage extends StatelessWidget {
+import '../../../../main.dart';
+
+// ignore: prefer_typing_uninitialized_variables
+var productos;
+
+class FridgePage extends StatefulWidget {
   const FridgePage({super.key});
+
+  @override
+  State<FridgePage> createState() => _FridgePageState();
+}
+
+class _FridgePageState extends State<FridgePage> {
+  final productProvider = ProductProvider();
+  final sessionController = SessionController();
+  @override
+  void initState() {
+    super.initState();
+    productos = productProvider.getProducts(sessionProvider.read.user!.uid);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +47,7 @@ class FridgePage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.black,
+                      color: const Color.fromRGBO(54, 140, 114, 1),
                       width: 2.0,
                     ),
                     borderRadius: BorderRadius.circular(20.0),
@@ -51,7 +73,6 @@ class FridgePage extends StatelessWidget {
                           ),
                         ),
                         // Centro el texto
-                        hintTextDirection: TextDirection.ltr,
                       ),
                     ),
                   ),
@@ -61,10 +82,7 @@ class FridgePage extends StatelessWidget {
                 width: 10,
               ),
               GestureDetector(
-                onTap: () async {
-
-             
-                },
+                onTap: () async {},
                 child: SizedBox(
                   width: 46,
                   height: 46,
@@ -74,77 +92,98 @@ class FridgePage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                width: 30,
-              ),
+              const SizedBox(width: 30),
             ],
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: GridView.count(
                 crossAxisCount: 3,
+                childAspectRatio: 0.8,
                 children: List.generate(
-                  16,
+                  productos.length,
                   (index) => GestureDetector(
                     onTap: () {
-                      router.pushNamed("/detailproduct",
-                          backGestureEnabled: true);
+                      var productToUpdate = productos[index];
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductDetailPage(productToUpdate: productToUpdate,
+                                  indexProduct: index,
+                                  product: productos[index],
+                                )),
+                      );
                     },
-                    child: Card(
-                      margin: const EdgeInsets.all(5.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                        side: const BorderSide(
-                          color: Color.fromARGB(255, 187, 181, 181),
-                          width: 2.0,
+                    child: Container(
+                      padding: const EdgeInsets.all(0),
+                      child: Card(
+                        margin: const EdgeInsets.all(5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.0),
+                          side: const BorderSide(
+                            color: Color.fromRGBO(167, 233, 209, 1),
+                            width: 2.0,
+                          ),
                         ),
-                      ),
-                      child: SizedBox(
-                        height: 80,
-                        width: 80,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const SizedBox(
-                                  height: 10,
-                                  width: 10,
+                                SizedBox(
+                                  height: 18,
+                                  width: 18,
                                   child: CircularProgressIndicator(
-                                    color: Colors.grey,
-                                    value: 0.7,
-                                    strokeWidth: 2,
+                                    color:
+                                        const Color.fromRGBO(54, 140, 114, 1),
+                                    value: calculateProgress(
+                                        productos[index].expiration),
+                                    strokeWidth: 3,
                                   ),
                                 ),
                                 const SizedBox(
                                   width: 5,
                                 ),
-                                Text(
-                                  "Caduca en ${index + 1} días",
-                                  style: const TextStyle(
-                                    fontSize: 11,
-                                    color: Color.fromARGB(255, 187, 181, 181),
-                                  ),
-                                )
+                                Column(
+                                  children: [
+                                    const Text(
+                                      "Caduca en",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Color.fromRGBO(95, 95, 95, 1),
+                                      ),
+                                    ),
+                                    Text(
+                                      "${calculateDaysLeft(productos[index].expiration)} días",
+                                      style: const TextStyle(
+                                        fontSize: 15,
+                                        color: Color.fromRGBO(95, 95, 95, 1),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 2,
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 3),
                             SizedBox(
-                              width: 60,
-                              height: 60,
+                              width: 70,
+                              height: 70,
                               child: Image.asset(
                                 'assets/lacteos_negro.png',
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            const SizedBox(height: 8.0),
-                            const Text(
-                              "Mantequilla",
-                              style: TextStyle(
+                            const SizedBox(height: 3),
+                            Text(
+                              productos[index].name,
+                              style: const TextStyle(
                                   fontSize: 14,
-                                  color: Color.fromARGB(255, 196, 191, 191)),
+                                  color: Color.fromRGBO(169, 169, 169, 1)),
                             ),
                           ],
                         ),
@@ -166,9 +205,22 @@ class FridgePage extends StatelessWidget {
               key: const Key("add_button"),
               heroTag: "btn2",
               onPressed: () {
-                router.pushNamed("/addproduct", backGestureEnabled: true);
+                var newProduct = Product(
+                    category: '',
+                    expiration: '',
+                    name: '',
+                    quantity: 0,
+                    storage: '',
+                    user: sessionProvider.read.user!.uid);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AddProductPage(
+                            product: newProduct,
+                          )),
+                );
               },
-              backgroundColor: const Color.fromARGB(255, 82, 212, 87),
+              backgroundColor: const Color.fromRGBO(54, 140, 114, 1),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -214,4 +266,49 @@ class FridgePage extends StatelessWidget {
       ),
     );
   }
+}
+
+int calculateDaysLeft(String dateStr) {
+  final dateFormat = DateFormat('yyyy-MM-dd');
+  final date = dateFormat.parse(dateStr);
+  final now = DateTime.now();
+  final difference = date.difference(DateTime(now.year, now.month, now.day));
+  return difference.inDays;
+}
+
+double calculateProgress(String dateStr) {
+  final daysLeft = calculateDaysLeft(dateStr);
+
+  if (daysLeft < 36) {
+    return 1;
+  }
+
+  if (daysLeft > 37 && daysLeft < 73) {
+    return 0.9;
+  }
+  if (daysLeft > 74 && daysLeft < 109) {
+    return 0.8;
+  }
+  if (daysLeft > 110 && daysLeft < 145) {
+    return 0.7;
+  }
+  if (daysLeft > 146 && daysLeft < 181) {
+    return 0.6;
+  }
+  if (daysLeft > 182 && daysLeft < 217) {
+    return 0.5;
+  }
+  if (daysLeft > 218 && daysLeft < 253) {
+    return 0.4;
+  }
+  if (daysLeft > 254 && daysLeft < 289) {
+    return 0.3;
+  }
+  if (daysLeft > 290 && daysLeft < 325) {
+    return 0.2;
+  }
+  if (daysLeft > 326) {
+    return 0.1;
+  }
+  return 1;
 }
