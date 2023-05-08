@@ -9,6 +9,7 @@ import 'app/inject_dependencies.dart';
 import 'app/my_app.dart';
 import 'app/ui/global_controllers/session_controller.dart';
 import 'firebase_options.dart';
+import 'package:hive/hive.dart';
 
 part 'main.g.dart';
 
