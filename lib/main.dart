@@ -45,6 +45,7 @@ void main() async {
     ..init(directorio.path)
     ..registerAdapter(ProductAdapter());
 
+
   var box = await Hive.openBox('productosBox');
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

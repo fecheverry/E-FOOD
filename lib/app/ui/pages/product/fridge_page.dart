@@ -109,7 +109,8 @@ class _FridgePageState extends State<FridgePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ProductDetailPage(productToUpdate: productToUpdate,
+                            builder: (context) => ProductDetailPage(
+                                  productToUpdate: productToUpdate,
                                   indexProduct: index,
                                   product: productos[index],
                                 )),
@@ -174,7 +175,7 @@ class _FridgePageState extends State<FridgePage> {
                               width: 70,
                               height: 70,
                               child: Image.asset(
-                                'assets/lacteos_negro.png',
+                                getIcon(productos[index].category),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -246,15 +247,15 @@ class _FridgePageState extends State<FridgePage> {
             if (index == 2) {
               router.pushNamed("/profile");
             }
-            if (index == 1) {}
+            if (index == 0) {}
           },
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.kitchen, size: 40),
+              icon: Icon(Icons.list, size: 40),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.list, size: 40),
+              icon: Icon(Icons.kitchen, size: 40),
               label: "",
             ),
             BottomNavigationBarItem(
@@ -311,4 +312,37 @@ double calculateProgress(String dateStr) {
     return 0.1;
   }
   return 1;
+}
+
+String getIcon(String category) {
+  switch (category) {
+    case "Embutidos":
+      return 'assets/salchicha.png';
+    case "Granos":
+      return 'assets/circulitos.png';
+    case "Cereales":
+      return 'assets/circulitos.png';
+    case "Postres":
+      return 'assets/dona_negra.png';
+    case "Condimentos":
+      return 'assets/bolsa_de_mata.png';
+    case "Frutas":
+      return 'assets/frutas_negro.png';
+    case "Verduras":
+      return 'assets/canasta_frutas.png';
+    case "Pescados":
+      return 'assets/pescado.png';
+    case "Mariscos":
+      return 'assets/pescado.png';
+    case "Salsas":
+      return 'assets/botellas.png';
+    case "Panes":
+      return 'assets/pan_negro.png';
+    case "Enlatados":
+      return 'assets/lata.png';
+    case "Lácteos":
+      return 'assets/lacteos_negro.png';
+    default:
+      return 'assets/lacteos_negro.png';
+  }
 }

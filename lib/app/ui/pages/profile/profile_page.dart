@@ -252,17 +252,20 @@ class ProfilePage extends ConsumerWidget {
           currentIndex: 2,
           onTap: (index) {
             if (index == 0) {
-              router.pushNamed("/fridge");
+        
             }
-            if (index == 1) {}
+            if (index == 1) {
+                    router.pushNamed("/fridge");
+            }
           },
           items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.kitchen, size: 40),
-              label: "",
-            ),
+          
             BottomNavigationBarItem(
               icon: Icon(Icons.list, size: 40),
+              label: "",
+            ),
+              BottomNavigationBarItem(
+              icon: Icon(Icons.kitchen, size: 40),
               label: "",
             ),
             BottomNavigationBarItem(

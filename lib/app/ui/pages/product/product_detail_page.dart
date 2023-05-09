@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:intl/intl.dart';
 import '../../../data/data_source/local/product_provider.dart';
@@ -144,7 +145,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         const SizedBox(
                           width: 10,
                         ),
-                        SizedBox(
+                          SizedBox(
                           height: 26,
                           width: 170,
                           child: TextFormField(
@@ -169,10 +170,27 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                   color: Colors.grey[400]!,
                                 ),
                               ),
-                            ),
+                            ), readOnly: true,
+                            onTap: () {
+                              DatePicker.showDatePicker(
+                                context,
+                                showTitleActions: true,
+                                minTime: DateTime.now(),
+                                maxTime: DateTime(2030, 12, 31),
+                                onChanged: (date) {
+                                  print('change $date');
+                                },
+                                onConfirm: (date) {
+                                  setState(() {
+                                    widget.product.expiration =
+                                        '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+                                  });
+                                },
+                                currentTime: DateTime.parse(widget.product.expiration),
+                                locale: LocaleType.en,
+                              );
+                            },
                             initialValue: widget.product.expiration,
-                            onSaved: (newExpiration) =>
-                                widget.product.expiration = newExpiration,
                           ),
                         ),
                       ],
@@ -367,15 +385,20 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                           content: DropdownButton<String>(
                                             value: widget.product.category,
                                             items: <String>[
-                                              'Lácteos',
-                                              'Carnes',
-                                              'Congelados',
-                                              "Panadería",
-                                              "Cereales",
+                                              "Embutidos",
                                               "Granos",
-                                              "Bebidas",
-                                              "Limpieza"
-                                            ].map<DropdownMenuItem<String>>(
+                                              "Cereales",
+                                              "Postres",
+                                              "Condimentos",
+                                              "Frutas",
+                                              "Verduras",
+                                              "Pescados",
+                                              "Mariscos",
+                                              "Salsas",
+                                              "Panes",
+                                              "Enlatados",
+                                              'Lácteos',
+                                         ].map<DropdownMenuItem<String>>(
                                                 (String value) {
                                               return DropdownMenuItem<String>(
                                                 value: value,

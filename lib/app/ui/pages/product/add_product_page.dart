@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:intl/intl.dart';
 import '../../../data/data_source/local/product_provider.dart';
+import "package:flutter_datetime_picker/flutter_datetime_picker.dart";
 
 class AddProductPage extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -21,7 +22,7 @@ class _AddProductPageState extends State<AddProductPage> {
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     return Scaffold(
-       resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
@@ -178,9 +179,27 @@ class _AddProductPageState extends State<AddProductPage> {
                                 ),
                               ),
                             ),
+                            readOnly: true,
+                            onTap: () {
+                              DatePicker.showDatePicker(
+                                context,
+                                showTitleActions: true,
+                                minTime: DateTime.now(),
+                                maxTime: DateTime(2030, 12, 31),
+                                onChanged: (date) {
+                                 
+                                },
+                                onConfirm: (date) {
+                                  setState(() {
+                                    widget.product.expiration =
+                                        '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+                                  });
+                                },
+                                currentTime: DateTime.now(),
+                                locale: LocaleType.en,
+                              );
+                            },
                             initialValue: widget.product.expiration,
-                            onSaved: (newExpiration) =>
-                                widget.product.expiration = newExpiration,
                           ),
                         ),
                       ],
@@ -386,14 +405,19 @@ class _AddProductPageState extends State<AddProductPage> {
                                           content: DropdownButton<String>(
                                             value: null,
                                             items: <String>[
-                                              'Lácteos',
-                                              'Carnes',
-                                              'Congelados',
-                                              "Panadería",
-                                              "Cereales",
+                                              "Embutidos",
                                               "Granos",
-                                              "Bebidas",
-                                              "Limpieza"
+                                              "Cereales",
+                                              "Postres",
+                                              "Condimentos",
+                                              "Frutas",
+                                              "Verduras",
+                                              "Pescados",
+                                              "Mariscos",
+                                              "Salsas",
+                                              "Panes",
+                                              "Enlatados",
+                                              'Lácteos',
                                             ].map<DropdownMenuItem<String>>(
                                                 (String value) {
                                               return DropdownMenuItem<String>(
