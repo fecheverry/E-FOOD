@@ -257,6 +257,15 @@ class ProfilePage extends ConsumerWidget {
             if (index == 1) {
                     router.pushNamed("/fridge");
             }
+<<<<<<< Updated upstream
+=======
+            if (index == 1) {
+              router.pushNamed("/list");
+            }
+            if (index == 2) {
+              router.pushNamed("/profile");
+            }
+>>>>>>> Stashed changes
           },
           items: const [
           

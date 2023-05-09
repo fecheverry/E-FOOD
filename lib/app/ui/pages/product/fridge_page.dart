@@ -244,10 +244,19 @@ class _FridgePageState extends State<FridgePage> {
           unselectedItemColor: Colors.white,
           currentIndex: 0,
           onTap: (index) {
+            if (index == 0) {
+              router.pushNamed("/fridge");
+            }
+            if (index == 1) {
+              router.pushNamed("/list");
+            }
             if (index == 2) {
               router.pushNamed("/profile");
             }
+<<<<<<< Updated upstream
             if (index == 0) {}
+=======
+>>>>>>> Stashed changes
           },
           items: const [
             BottomNavigationBarItem(

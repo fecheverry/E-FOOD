@@ -1,15 +1,13 @@
-import 'dart:io';
+import 'package:e_food/app/domain/services/list_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 
-import 'app/data/data_source/local/product_provider.dart';
 import 'app/inject_dependencies.dart';
 import 'app/my_app.dart';
-import 'app/ui/global_controllers/session_controller.dart';
 import 'firebase_options.dart';
-import 'package:hive/hive.dart';
 
 part 'main.g.dart';
 
@@ -52,5 +50,10 @@ void main() async {
   );
   injectDependencies();
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ListService(),
+      child: const MyApp(),
+    ),
+  );
 }
