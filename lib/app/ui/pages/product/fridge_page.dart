@@ -122,8 +122,12 @@ class _FridgePageState extends State<FridgePage> {
                         margin: const EdgeInsets.all(5),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
-                          side: const BorderSide(
-                            color: Color.fromRGBO(167, 233, 209, 1),
+                          side: BorderSide(
+                            color:DateTime.parse(productos[index]
+                                            .expiration)
+                                            .isBefore(DateTime.now())
+                                        ? const Color.fromARGB(255, 190, 88, 84)
+                                : const Color.fromRGBO(167, 233, 209, 1),
                             width: 2.0,
                           ),
                         ),
@@ -137,8 +141,11 @@ class _FridgePageState extends State<FridgePage> {
                                   height: 18,
                                   width: 18,
                                   child: CircularProgressIndicator(
-                                    color:
-                                        const Color.fromRGBO(54, 140, 114, 1),
+                                    color: DateTime.parse(productos[index]
+                                            .expiration)
+                                            .isBefore(DateTime.now())
+                                        ? const Color.fromARGB(255, 190, 88, 84)
+                                        : const Color.fromRGBO(54, 140, 114, 1),
                                     value: calculateProgress(
                                         productos[index].expiration),
                                     strokeWidth: 3,
@@ -245,18 +252,12 @@ class _FridgePageState extends State<FridgePage> {
           currentIndex: 0,
           onTap: (index) {
             if (index == 0) {
-              router.pushNamed("/fridge");
-            }
-            if (index == 1) {
               router.pushNamed("/list");
             }
+
             if (index == 2) {
               router.pushNamed("/profile");
             }
-<<<<<<< Updated upstream
-            if (index == 0) {}
-=======
->>>>>>> Stashed changes
           },
           items: const [
             BottomNavigationBarItem(

@@ -72,22 +72,24 @@ class MyListView extends StatelessWidget {
         currentIndex: 2,
         onTap: (index) {
           if (index == 0) {
-            router.pushNamed("/fridge");
+         
           }
           if (index == 1) {
-            router.pushNamed("/list");
+               router.pushNamed("/fridge");
+       
           }
           if (index == 2) {
             router.pushNamed("/profile");
           }
         },
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.kitchen, size: 40),
-            label: "",
-          ),
+        
           BottomNavigationBarItem(
             icon: Icon(Icons.list, size: 40),
+            label: "",
+          ),
+            BottomNavigationBarItem(
+            icon: Icon(Icons.kitchen, size: 40),
             label: "",
           ),
           BottomNavigationBarItem(

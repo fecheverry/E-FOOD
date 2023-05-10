@@ -252,28 +252,23 @@ class ProfilePage extends ConsumerWidget {
           currentIndex: 2,
           onTap: (index) {
             if (index == 0) {
-        
+               router.pushNamed("/list");
             }
+
             if (index == 1) {
-                    router.pushNamed("/fridge");
-            }
-<<<<<<< Updated upstream
-=======
-            if (index == 1) {
-              router.pushNamed("/list");
+               router.pushNamed("/fridge");
+           
             }
             if (index == 2) {
-              router.pushNamed("/profile");
+           
             }
->>>>>>> Stashed changes
           },
           items: const [
-          
             BottomNavigationBarItem(
               icon: Icon(Icons.list, size: 40),
               label: "",
             ),
-              BottomNavigationBarItem(
+            BottomNavigationBarItem(
               icon: Icon(Icons.kitchen, size: 40),
               label: "",
             ),

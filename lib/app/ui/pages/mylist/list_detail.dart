@@ -17,6 +17,7 @@ class ListDetailScreen extends StatelessWidget {
     final productQuantityController = TextEditingController();
 
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(54, 140, 114, 1),
