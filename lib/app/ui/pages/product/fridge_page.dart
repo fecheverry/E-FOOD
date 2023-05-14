@@ -1,4 +1,5 @@
 import 'package:e_food/app/data/data_source/local/product_provider.dart';
+import 'package:e_food/app/domain/services/list_service.dart';
 import 'package:e_food/app/ui/global_controllers/session_controller.dart';
 import 'package:e_food/app/ui/pages/product/add_product_page.dart';
 import 'package:e_food/app/ui/pages/product/product_detail_page.dart';
@@ -7,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_meedu/ui.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../main.dart';
 
@@ -25,8 +27,13 @@ class _FridgePageState extends State<FridgePage> {
   final sessionController = SessionController();
   @override
   void initState() {
+    final inventory = Provider.of<ListService>(
+      context,
+      listen: false,
+    ).inventory;
     super.initState();
-    productos = productProvider.getProducts(sessionProvider.read.user!.uid);
+    // productos = productProvider.getProducts(sessionProvider.read.user!.uid);
+    productos = inventory;
   }
 
   @override
@@ -122,12 +129,8 @@ class _FridgePageState extends State<FridgePage> {
                         margin: const EdgeInsets.all(5),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
-                          side: BorderSide(
-                            color:DateTime.parse(productos[index]
-                                            .expiration)
-                                            .isBefore(DateTime.now())
-                                        ? const Color.fromARGB(255, 190, 88, 84)
-                                : const Color.fromRGBO(167, 233, 209, 1),
+                          side: const BorderSide(
+                            color: Color.fromRGBO(167, 233, 209, 1),
                             width: 2.0,
                           ),
                         ),
@@ -141,11 +144,8 @@ class _FridgePageState extends State<FridgePage> {
                                   height: 18,
                                   width: 18,
                                   child: CircularProgressIndicator(
-                                    color: DateTime.parse(productos[index]
-                                            .expiration)
-                                            .isBefore(DateTime.now())
-                                        ? const Color.fromARGB(255, 190, 88, 84)
-                                        : const Color.fromRGBO(54, 140, 114, 1),
+                                    color:
+                                        const Color.fromRGBO(54, 140, 114, 1),
                                     value: calculateProgress(
                                         productos[index].expiration),
                                     strokeWidth: 3,
@@ -182,7 +182,7 @@ class _FridgePageState extends State<FridgePage> {
                               width: 70,
                               height: 70,
                               child: Image.asset(
-                                getIcon(productos[index].category),
+                                'assets/lacteos_negro.png',
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -252,20 +252,22 @@ class _FridgePageState extends State<FridgePage> {
           currentIndex: 0,
           onTap: (index) {
             if (index == 0) {
+              router.pushNamed("/fridge");
+            }
+            if (index == 1) {
               router.pushNamed("/list");
             }
-
             if (index == 2) {
               router.pushNamed("/profile");
             }
           },
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.list, size: 40),
+              icon: Icon(Icons.kitchen, size: 40),
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.kitchen, size: 40),
+              icon: Icon(Icons.list, size: 40),
               label: "",
             ),
             BottomNavigationBarItem(
@@ -322,37 +324,4 @@ double calculateProgress(String dateStr) {
     return 0.1;
   }
   return 1;
-}
-
-String getIcon(String category) {
-  switch (category) {
-    case "Embutidos":
-      return 'assets/salchicha.png';
-    case "Granos":
-      return 'assets/circulitos.png';
-    case "Cereales":
-      return 'assets/circulitos.png';
-    case "Postres":
-      return 'assets/dona_negra.png';
-    case "Condimentos":
-      return 'assets/bolsa_de_mata.png';
-    case "Frutas":
-      return 'assets/frutas_negro.png';
-    case "Verduras":
-      return 'assets/canasta_frutas.png';
-    case "Pescados":
-      return 'assets/pescado.png';
-    case "Mariscos":
-      return 'assets/pescado.png';
-    case "Salsas":
-      return 'assets/botellas.png';
-    case "Panes":
-      return 'assets/pan_negro.png';
-    case "Enlatados":
-      return 'assets/lata.png';
-    case "Lácteos":
-      return 'assets/lacteos_negro.png';
-    default:
-      return 'assets/lacteos_negro.png';
-  }
 }

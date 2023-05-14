@@ -100,7 +100,8 @@ class RegisterPage extends StatelessWidget {
                                           focusedBorder:
                                               const UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.green,
+                                              color: Color.fromRGBO(
+                                                  54, 140, 114, 1),
                                               width: 2.0,
                                             ),
                                           ),
@@ -112,13 +113,15 @@ class RegisterPage extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        cursorColor: Colors.green,
+                                        cursorColor:
+                                            Color.fromRGBO(54, 140, 114, 1),
                                       ),
                                       if (state.hasError)
                                         Text(
                                           state.errorText!,
                                           style: const TextStyle(
-                                              color: Colors.green),
+                                              color: Color.fromRGBO(
+                                                  54, 140, 114, 1)),
                                         )
                                     ],
                                   );
@@ -166,7 +169,8 @@ class RegisterPage extends StatelessWidget {
                                           focusedBorder:
                                               const UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.green,
+                                              color: Color.fromRGBO(
+                                                  54, 140, 114, 1),
                                               width: 2.0,
                                             ),
                                           ),
@@ -178,13 +182,15 @@ class RegisterPage extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        cursorColor: Colors.green,
+                                        cursorColor:
+                                            Color.fromRGBO(54, 140, 114, 1),
                                       ),
                                       if (state.hasError)
                                         Text(
                                           state.errorText!,
                                           style: const TextStyle(
-                                              color: Colors.green),
+                                              color: Color.fromRGBO(
+                                                  54, 140, 114, 1)),
                                         )
                                     ],
                                   );
@@ -236,7 +242,8 @@ class RegisterPage extends StatelessWidget {
                                         Text(
                                           state.errorText!,
                                           style: const TextStyle(
-                                              color: Colors.green),
+                                              color: Color.fromRGBO(
+                                                  54, 140, 114, 1)),
                                         )
                                     ],
                                   );
@@ -300,7 +307,8 @@ class RegisterPage extends StatelessWidget {
                                             Text(
                                               state.errorText!,
                                               style: const TextStyle(
-                                                  color: Colors.green),
+                                                  color: Color.fromRGBO(
+                                                      54, 140, 114, 1)),
                                             )
                                         ],
                                       );

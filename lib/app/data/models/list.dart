@@ -8,23 +8,27 @@ class Folder {
   final String id;
   final String name;
   final List<Task> tasks;
+  bool isPublic;
 
   Folder({
     required this.id,
     required this.name,
     required this.tasks,
+    required this.isPublic,
   });
 
   factory Folder.fromJson(Map<String, dynamic> json) => Folder(
         id: json["id"],
         name: json["name"],
         tasks: List<Task>.from(json["tasks"].map((x) => Task.fromJson(x))),
+        isPublic: json["is_public"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "tasks": List<dynamic>.from(tasks.map((x) => x.toJson())),
+        "is_public": isPublic,
       };
 }
 

@@ -103,7 +103,8 @@ class LoginPage extends StatelessWidget {
                                             focusedBorder:
                                                 const UnderlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Colors.green,
+                                                color: Color.fromRGBO(
+                                                    54, 140, 114, 1),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -115,13 +116,15 @@ class LoginPage extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          cursorColor: Colors.green,
+                                          cursorColor:
+                                              Color.fromRGBO(54, 140, 114, 1),
                                         ),
                                         if (state.hasError)
                                           Text(
                                             state.errorText!,
                                             style: const TextStyle(
-                                                color: Colors.green),
+                                                color: Color.fromRGBO(
+                                                    54, 140, 114, 1)),
                                           )
                                       ],
                                     );
@@ -173,7 +176,8 @@ class LoginPage extends StatelessWidget {
                                           Text(
                                             state.errorText!,
                                             style: const TextStyle(
-                                                color: Colors.green),
+                                                color: Color.fromRGBO(
+                                                    54, 140, 114, 1)),
                                           )
                                       ],
                                     );
@@ -210,7 +214,7 @@ class LoginPage extends StatelessWidget {
                       height: 40,
                     ),
                     ElevatedButton(
-                      onPressed: ()=> sendLoginForm(context),
+                      onPressed: () => sendLoginForm(context),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 82, 212, 87),
                         shape: RoundedRectangleBorder(

@@ -1,9 +1,10 @@
+import 'package:e_food/app/domain/services/list_service.dart';
 import 'package:e_food/app/ui/pages/widgets/modal_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import '../../../data/data_source/local/product_provider.dart';
-import "package:flutter_datetime_picker/flutter_datetime_picker.dart";
 
 class AddProductPage extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -179,27 +180,9 @@ class _AddProductPageState extends State<AddProductPage> {
                                 ),
                               ),
                             ),
-                            readOnly: true,
-                            onTap: () {
-                              DatePicker.showDatePicker(
-                                context,
-                                showTitleActions: true,
-                                minTime: DateTime.now(),
-                                maxTime: DateTime(2030, 12, 31),
-                                onChanged: (date) {
-                                 
-                                },
-                                onConfirm: (date) {
-                                  setState(() {
-                                    widget.product.expiration =
-                                        '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
-                                  });
-                                },
-                                currentTime: DateTime.now(),
-                                locale: LocaleType.en,
-                              );
-                            },
                             initialValue: widget.product.expiration,
+                            onSaved: (newExpiration) =>
+                                widget.product.expiration = newExpiration,
                           ),
                         ),
                       ],
@@ -405,19 +388,14 @@ class _AddProductPageState extends State<AddProductPage> {
                                           content: DropdownButton<String>(
                                             value: null,
                                             items: <String>[
-                                              "Embutidos",
-                                              "Granos",
-                                              "Cereales",
-                                              "Postres",
-                                              "Condimentos",
-                                              "Frutas",
-                                              "Verduras",
-                                              "Pescados",
-                                              "Mariscos",
-                                              "Salsas",
-                                              "Panes",
-                                              "Enlatados",
                                               'Lácteos',
+                                              'Carnes',
+                                              'Congelados',
+                                              "Panadería",
+                                              "Cereales",
+                                              "Granos",
+                                              "Bebidas",
+                                              "Limpieza"
                                             ].map<DropdownMenuItem<String>>(
                                                 (String value) {
                                               return DropdownMenuItem<String>(
@@ -503,6 +481,13 @@ class _AddProductPageState extends State<AddProductPage> {
                       child: ElevatedButton(
                         onPressed: () {
                           formKey.currentState!.save();
+                          final listService = Provider.of<ListService>(
+                            context,
+                            listen: false,
+                          );
+
+                          listService.addProductToInventory(widget.product);
+
                           if (isValidDate(widget.product.expiration)) {
                             formKey.currentState!.save();
                             productProvider.addProduct(widget.product);

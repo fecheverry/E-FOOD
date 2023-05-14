@@ -12,11 +12,12 @@ class MyListView extends StatelessWidget {
     final listService = Provider.of<ListService>(context);
     final folders = listService.folders;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Mis listas',
           style: TextStyle(
-            color: Colors.green,
+            color: Color.fromRGBO(54, 140, 114, 1),
           ),
         ),
         centerTitle: false,
@@ -52,7 +53,12 @@ class MyListView extends StatelessWidget {
         heroTag: "btn2",
         onPressed: () {
           listService.addFolder(
-            Folder(id: '12345', name: 'Nueva lista', tasks: []),
+            Folder(
+              id: '12345',
+              name: 'Nueva lista',
+              tasks: [],
+              isPublic: false,
+            ),
           );
         },
         backgroundColor: const Color.fromRGBO(54, 140, 114, 1),
@@ -72,24 +78,22 @@ class MyListView extends StatelessWidget {
         currentIndex: 2,
         onTap: (index) {
           if (index == 0) {
-         
+            router.pushNamed("/fridge");
           }
           if (index == 1) {
-               router.pushNamed("/fridge");
-       
+            router.pushNamed("/list");
           }
           if (index == 2) {
             router.pushNamed("/profile");
           }
         },
         items: const [
-        
           BottomNavigationBarItem(
-            icon: Icon(Icons.list, size: 40),
+            icon: Icon(Icons.kitchen, size: 40),
             label: "",
           ),
-            BottomNavigationBarItem(
-            icon: Icon(Icons.kitchen, size: 40),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list, size: 40),
             label: "",
           ),
           BottomNavigationBarItem(
@@ -124,10 +128,10 @@ class CustomUserFolder extends StatelessWidget {
         width: 180,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Colors.white,
           borderRadius: BorderRadius.circular(30),
           border: Border.all(
-            color: Colors.green,
+            color: const Color.fromRGBO(54, 140, 114, 1),
             width: 2,
           ),
         ),
@@ -194,6 +198,12 @@ class SingleTask extends StatelessWidget {
       children: [
         Icon(
           task.isCompleted ? Icons.check_box : Icons.check_box_outline_blank,
+          color: const Color.fromRGBO(
+            54,
+            140,
+            114,
+            1,
+          ),
         ),
         const SizedBox(width: 10),
         SizedBox(
