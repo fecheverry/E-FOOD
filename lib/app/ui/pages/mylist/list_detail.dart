@@ -78,6 +78,13 @@ class _ListDetailScreenState extends State<ListDetailScreen> {
                     ElevatedButton(
                       onPressed: () {
                         // TODO: Share this list to Firebase
+                        const nuevoProducto = {
+  nombreProducto: 'Nombre del producto',
+  cantidad: 10
+};
+
+agregarProducto(nuevoProducto);
+
                         listService.changeFolderPrivacy(
                           !currentFolder.isPublic,
                         );
@@ -136,6 +143,20 @@ class _ListDetailScreenState extends State<ListDetailScreen> {
         heroTag: "btn2",
         onPressed: () {
           // TODO: Create new task
+          // Obtener referencia a la colección
+const db = firebase.firestore();
+const misListas = db.collection('mis listas');
+
+function agregarProducto(nuevoProducto) {  
+  // Agregar producto a la colección
+  misListas.add(nuevoProducto)
+    .then(function(docRef) {
+      // Producto agregado exitosamente
+    })
+    .catch(function(error) {
+      console.error('Error al agregar producto: ', error);
+    });
+}
           showModalBottomSheet<void>(
             context: context,
             isScrollControlled: true,
